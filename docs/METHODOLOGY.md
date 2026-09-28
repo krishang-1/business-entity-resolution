@@ -161,7 +161,7 @@ Validation = 88,272 train S1 (4% per country × has-match, disjoint from trainin
 - **Leave-one-country-out (proxy for unseen France; measured on the v2 pipeline):** train US → eval India 0.8072
   (in-domain 0.9322); train India → eval US 0.9413 (in-domain 0.9638). India's native-script names are the hard direction; France is
   Latin-script like US, and the final model is trained on both countries.
-- **Test sanity (France):** predicted matches per S1 France 3.19 (empty 5.9%) vs US 3.38 (5.7%) and India 3.23 (6.4%).
+- **Test sanity (France):** predicted matches per S1 France 3.20 (empty 5.9%) vs US 3.41 (5.7%) and India 3.26 (6.2%).
   France receives more candidates (36.1/S1 vs 19.6 US, 22.4 India) because the stage-1 blocker is less confident on it.
 - **Common false positives (wrong merges):** different businesses with similar names at the same or a neighbouring
   address (e.g. `shah ladder` vs `shah legal` in the same building; `ocean city village` vs `ocean city`), and exact
@@ -176,7 +176,7 @@ Validation = 88,272 train S1 (4% per country × has-match, disjoint from trainin
 ## 6. Conclusion
 Country-partitioned, multi-list sparse retrieval followed by a learned first-stage blocker gives 0.954 pair recall at
 21 candidates per S1 on 10M-record pools within 8 GB RAM, and a LightGBM matcher with a one-owner, F0.5-tuned decision
-rule reaches 0.956 macro F0.5 on validation with 0.987 precision. A learned blocker beats hand-set rank caps clearly:
+rule with pass-2 sibling-support stacking reaches 0.959 macro F0.5 on validation with 0.988 precision. A learned blocker beats hand-set rank caps clearly:
 at equal recall it needs 6 instead of 18 candidates per S1. The main lessons: address carries most of the signal (junk and transliterated
 names are common), precision-first decisions are cheap (a small recall loss), and the transliterated native-script
 names are the main source of both blocking and matching errors.

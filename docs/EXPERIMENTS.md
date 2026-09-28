@@ -154,3 +154,7 @@ India: current 0.9315 / ceiling 0.9735 / 21.74 cands -> +3 new: 0.9456 / 0.9774 
 US:    current 0.9667 / ceiling 0.9894 / 21.09 cands -> +3 new: 0.9731 / 0.9908 / 24.02 | +8: 0.9747 / 0.9913 / 28.51 | +20: 0.9760 / 0.9917 / 36.20
 new-pair precision at +3: India 0.016, US 0.007. Weighted (val is ~60% US / 40% India): recall ~+0.009, ceiling ~+0.0024 at +3 cands.
 gate (+0.01 recall at <= +8 cands): borderline (India pass, US below). Not integrated yet.
+
+## 11:10 IST (28 Sep) — v5 (pass-2 stacking) test output -> PROMOTED (validator PASS incl. --check-ids); v3 files kept in output/_backup_v3/
+val: F0.5=0.9589 P=0.9877 R=0.9175 (thr 0.44, rel 0.7, one-owner) | candidates unchanged from v3 (mean 23.38, median 22, p95 40, max 40)
+test predictions: mean 3.31 matches/S1, empty 5.96% | US 3.41/5.71%, France 3.20/5.90%, India 3.26/6.18%
